@@ -3,7 +3,6 @@ $filename = __DIR__ . "/day2.txt";
 
 if (file_exists($filename)) {
     $file = fopen($filename, "r");
-
     $countSafe = 0;
 
     while (($line = fgets($file)) !== false) {
@@ -12,11 +11,10 @@ if (file_exists($filename)) {
         $incrementa = false;
         $decrementa = false;
         $unsafe = false;
-
-        $numero_anterior = 0;
+        $numero_anterior = null;
 
         foreach ($lista_numeros as $key => $numero) {
-            if ($key > 0) {
+            if ($key > 0 && $numero_anterior !== null) {
                 if ($numero_anterior > $numero) {
                     $decrementa = true;
                 } elseif ($numero_anterior < $numero) {
